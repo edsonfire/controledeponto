@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.prime.projeto.live.dio.Service.JordanaTrabalhoService;
+import br.com.prime.projeto.live.dio.dto.JornadaTrabalhoDTO;
 import br.com.prime.projeto.live.dio.modelo.JornadaTrabalho;
 
 @RestController
@@ -24,24 +25,25 @@ public class JornadaTrabalhoController {
 	private JordanaTrabalhoService service;
 	
 	@PostMapping
-	public JornadaTrabalho createJornada(@RequestBody JornadaTrabalho jt) {
+	public JornadaTrabalhoDTO createJornada(@RequestBody JornadaTrabalhoDTO jt) {
+		
 		return service.save(jt);
 		
 	}
 	
 	@GetMapping
-	public List<JornadaTrabalho> getAll(){
+	public List<JornadaTrabalhoDTO> getAll(){
 		return service.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<JornadaTrabalho>  getById(@PathVariable("id") long id ) throws Exception {
+	public ResponseEntity<JornadaTrabalhoDTO>  getById(@PathVariable("id") long id ) throws Exception {
 		
 		return ResponseEntity.ok(service.getById(id).orElseThrow(()-> new Exception("Jornada não encontrada")));
 	}
 
 	@PutMapping
-	public JornadaTrabalho updateJornada(@RequestBody JornadaTrabalho jt) {
+	public JornadaTrabalhoDTO updateJornada(@RequestBody JornadaTrabalhoDTO jt) {
 		return service.update(jt);
 		
 	}
