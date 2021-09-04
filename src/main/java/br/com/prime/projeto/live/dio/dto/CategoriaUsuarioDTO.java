@@ -1,10 +1,6 @@
-package br.com.prime.projeto.live.dio.modelo;
+package br.com.prime.projeto.live.dio.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
+import br.com.prime.projeto.live.dio.modelo.CategoriaUsuario;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -18,10 +14,17 @@ import lombok.Setter;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Builder
-@Entity
-public class TipoData {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CategoriaUsuarioDTO {
 	private long id;
 	private String descricao;
+	
+	
+	public CategoriaUsuarioDTO(CategoriaUsuario c) {
+		
+		this.id = c.getId();
+		this.descricao = c.getDescricao();
+		
+	}
+	
+	
 }

@@ -1,10 +1,6 @@
-package br.com.prime.projeto.live.dio.modelo;
+package br.com.prime.projeto.live.dio.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
+import br.com.prime.projeto.live.dio.modelo.Ocorrencia;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -18,10 +14,20 @@ import lombok.Setter;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Builder
-@Entity
-public class TipoData {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class OcorrenciaDTO {
+	
 	private long id;
+	private String nome;
 	private String descricao;
+	public OcorrenciaDTO(Ocorrencia oc) {
+		
+		this.id = oc.getId();
+		this.nome = oc.getNome();
+		this.descricao = oc.getDescricao();
+	}
+	
+	
+	
+	
+
 }
