@@ -12,37 +12,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.prime.projeto.live.dio.Service.JordanaTrabalhoService;
-import br.com.prime.projeto.live.dio.dto.JornadaTrabalhoDTO;
+import br.com.prime.projeto.live.dio.Service.NivelAcessoService;
+import br.com.prime.projeto.live.dio.dto.NivelAcessoDTO;
 
 @RestController
-@RequestMapping("/jornada")
-public class JornadaTrabalhoController {
+@RequestMapping("/nivelacesso")
+public class NivelAcessoController {
 
 	
 	@Autowired
-	private JordanaTrabalhoService service;
+	private NivelAcessoService service;
 	
 	@PostMapping
-	public JornadaTrabalhoDTO createJornada(@RequestBody JornadaTrabalhoDTO jt) {
+	public NivelAcessoDTO createJornada(@RequestBody NivelAcessoDTO jt) {
 		
 		return service.save(jt);
 		
 	}
 	
 	@GetMapping
-	public List<JornadaTrabalhoDTO> getAll(){
+	public List<NivelAcessoDTO> getAll(){
 		return service.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<JornadaTrabalhoDTO>  getById(@PathVariable("id") long id ) throws Exception {
+	public ResponseEntity<NivelAcessoDTO>  getById(@PathVariable("id") long id ) throws Exception {
 		
 		return ResponseEntity.ok(service.getById(id).orElseThrow(()-> new Exception("Jornada não encontrada")));
 	}
 
 	@PutMapping
-	public JornadaTrabalhoDTO updateJornada(@RequestBody JornadaTrabalhoDTO jt) {
+	public NivelAcessoDTO updateJornada(@RequestBody NivelAcessoDTO jt) {
 		return service.update(jt);
 		
 	}

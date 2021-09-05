@@ -12,37 +12,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.prime.projeto.live.dio.Service.JordanaTrabalhoService;
-import br.com.prime.projeto.live.dio.dto.JornadaTrabalhoDTO;
+import br.com.prime.projeto.live.dio.Service.LocalidadeService;
+import br.com.prime.projeto.live.dio.dto.LocalidadeDTO;
 
 @RestController
-@RequestMapping("/jornada")
-public class JornadaTrabalhoController {
+@RequestMapping("/localidade")
+public class LocalidadeController {
 
 	
 	@Autowired
-	private JordanaTrabalhoService service;
+	private LocalidadeService service;
 	
 	@PostMapping
-	public JornadaTrabalhoDTO createJornada(@RequestBody JornadaTrabalhoDTO jt) {
+	public LocalidadeDTO createJornada(@RequestBody LocalidadeDTO jt) {
 		
 		return service.save(jt);
 		
 	}
 	
 	@GetMapping
-	public List<JornadaTrabalhoDTO> getAll(){
+	public List<LocalidadeDTO> getAll(){
 		return service.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<JornadaTrabalhoDTO>  getById(@PathVariable("id") long id ) throws Exception {
+	public ResponseEntity<LocalidadeDTO>  getById(@PathVariable("id") long id ) throws Exception {
 		
 		return ResponseEntity.ok(service.getById(id).orElseThrow(()-> new Exception("Jornada não encontrada")));
 	}
 
 	@PutMapping
-	public JornadaTrabalhoDTO updateJornada(@RequestBody JornadaTrabalhoDTO jt) {
+	public LocalidadeDTO updateJornada(@RequestBody LocalidadeDTO jt) {
 		return service.update(jt);
 		
 	}

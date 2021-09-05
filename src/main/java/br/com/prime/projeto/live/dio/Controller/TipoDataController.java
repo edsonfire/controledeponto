@@ -16,8 +16,8 @@ import br.com.prime.projeto.live.dio.Service.JordanaTrabalhoService;
 import br.com.prime.projeto.live.dio.dto.JornadaTrabalhoDTO;
 
 @RestController
-@RequestMapping("/jornada")
-public class JornadaTrabalhoController {
+@RequestMapping("/tipodata")
+public class TipoDataController {
 
 	
 	@Autowired

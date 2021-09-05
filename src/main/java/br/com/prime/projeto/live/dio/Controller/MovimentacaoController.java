@@ -12,36 +12,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.prime.projeto.live.dio.Service.BancoHorasService;
-import br.com.prime.projeto.live.dio.dto.BancoHorasDTO;
-import br.com.prime.projeto.live.dio.modelo.BancoHoras;
-import br.com.prime.projeto.live.dio.modelo.BancoHoras.BancoHorasId;
+import br.com.prime.projeto.live.dio.Service.MovimentacaoService;
+import br.com.prime.projeto.live.dio.dto.MovimentacaoDTO;
+import br.com.prime.projeto.live.dio.modelo.Movimentacao;
+import br.com.prime.projeto.live.dio.modelo.Movimentacao.MovimentacaoId;
 
 @RestController
-@RequestMapping("/bancohoras")
-public class BancoHorasController {
+@RequestMapping("/movimentacao")
+public class MovimentacaoController {
 
 	
 	@Autowired
-	private BancoHorasService service;
+	private MovimentacaoService service;
 	
 	@PostMapping
-	public BancoHorasDTO createJornada(@RequestBody BancoHorasDTO jt) {
+	public MovimentacaoDTO createJornada(@RequestBody MovimentacaoDTO jt) {
 		
 		return service.save(jt);
 		
 	}
 	
 	@GetMapping
-	public List<BancoHorasDTO> getAll(){
+	public List<MovimentacaoDTO> getAll(){
 		return service.findAll();
 	}
 	
-	@GetMapping("/{id}/{idmov}/{idu}")
-	public ResponseEntity<BancoHorasDTO>  getById(@PathVariable("id") long idbh,@PathVariable("idmov") long idmov, @PathVariable("idu") long idu ) throws Exception {
+	@GetMapping("/{idmov}/{idu}")
+	public ResponseEntity<MovimentacaoDTO>  getById(@PathVariable("idmov") long idmov, @PathVariable("idu") long idu ) throws Exception {
 		
 		
-		BancoHorasId bid = new BancoHoras().new BancoHorasId(idbh, idmov, idu);
+		MovimentacaoId bid = new Movimentacao().new MovimentacaoId(idmov, idu);
 		
 		
 		
@@ -50,17 +50,17 @@ public class BancoHorasController {
 	}
 
 	@PutMapping
-	public BancoHorasDTO updateJornada(@RequestBody BancoHorasDTO jt) {
+	public MovimentacaoDTO updateJornada(@RequestBody MovimentacaoDTO jt) {
 		return service.update(jt);
 		
 	}
 	
-	@GetMapping("/del/{id}/{idmov}/{idu}")
-	public ResponseEntity<String> deleteJormada(@PathVariable("id") long idbh,@PathVariable("idmov") long idmov, @PathVariable("idu") long idu) {
+	@GetMapping("/del/{idmov}/{idu}")
+	public ResponseEntity<String> deleteJormada(@PathVariable("idmov") long idmov, @PathVariable("idu") long idu) {
 		
 		
 
-		BancoHorasId bid = new BancoHoras().new BancoHorasId(idbh, idmov, idu);
+		MovimentacaoId bid = new Movimentacao().new MovimentacaoId(idmov, idu);
 		
 		
 		try {

@@ -32,6 +32,10 @@ public class Movimentacao {
 	@AllArgsConstructor
 	@Embeddable
 	public class MovimentacaoId implements Serializable{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 		private long idMovimentacao;
 		private long idUsuario;
 	}
